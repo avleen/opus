@@ -42,9 +42,11 @@ func (d *Decoder) decode(in []byte, out []float32) (bandwidth Bandwidth, isStere
 		return 0, false, fmt.Errorf("%w: %d", errUnsupportedFrameCode, tocHeader.frameCode())
 	}
 
-	if cfg.mode() != configurationModeSilkOnly {
+	/*
+        if cfg.mode() != configurationModeSilkOnly {
 		return 0, false, fmt.Errorf("%w: %d", errUnsupportedConfigurationMode, cfg.mode())
 	}
+        */
 
 	for _, encodedFrame := range encodedFrames {
 		err := d.silkDecoder.Decode(
